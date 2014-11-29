@@ -3,7 +3,7 @@ layout:     post
 title:      Getting Started with postGIS and GeoDjango
 date:       2014-11-28 17:30:00
 summary:    And why you should suck it up and use a spacial database
-categories: django, geojson, python, GIS
+categories: django geojson python GIS
 ---
 
 If you are thinking about writing a location-based application, or implementing any type of geospatial mapping on the web, 

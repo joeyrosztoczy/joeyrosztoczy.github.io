@@ -3,7 +3,7 @@ layout:     post
 title:      A note on testing AngularJS
 date:       2014-11-25 17:30:00
 summary:    How not to get mired in testing hell, start early
-categories: testing, BDD, TDD
+categories: testing BDD TDD
 ---
 
 
