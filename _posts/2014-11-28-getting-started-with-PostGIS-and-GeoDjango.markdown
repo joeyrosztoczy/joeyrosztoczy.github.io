@@ -1,8 +1,8 @@
 ---
 layout:     post
-title:      Getting Started with postGIS and GeoDjango
+title:      Getting Started with PostGIS and GeoDjango
 date:       2014-11-28 17:30:00
-summary:    And why you should suck it up and use a spacial database
+summary:    And why you should suck it up and use a spatial database
 categories: django geojson python GIS
 ---
 
@@ -17,17 +17,17 @@ These two tools provide some serious awesomeness, specifically: *spacial queries
 I started out my project trying to use lighter weight alternatives like django-geojson. 
 Trust me, its worth a little bit of extra effort to implement the real deal.
 
-So, lets get started with configuring postGIS. Since you are naturally using [Homebrew][3], its pretty straightforward. 
+So, let's get started with configuring postGIS. Since you are naturally using [Homebrew][3], its pretty straightforward. 
 
 		// Update homebrew first (of course)
 		$ brew update
 		$ brew doctor
 
 		// Now lets get at that spatial database
-		$ brew install postgis // This should also install the latest stable postgres
+		$ brew install postgis
 		$ brew install gdal
 
-After update Homebrew, this gives us (1) PostgreSQL and its spatial extension PostGIS and (2) [GDAL][6] the geospatial data abstraction library. 
+After updating Homebrew, this gives us (1) PostgreSQL and its spatial extension PostGIS and (2) [GDAL][6] the geospatial data abstraction library. 
 Once we have these backend dependencies installed, we also need to remember to get the psycopg2 library, it provides a Python adapter for PostgreSQL. 
 FYI, I use [virtual env][4] to contain each of my django projects, but I'm going to ignore moving around in those for this tutorial.
 
