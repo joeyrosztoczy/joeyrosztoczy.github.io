@@ -64,16 +64,19 @@ Note: The $http functions are from the AngularJS library. Rx functions are from 
 {% highlight javascript %}
 var whatWeReallyWant;
 
+// 1:
 $http.get(/companies, {params: {client_id: client.id}})
  .success(function(clientCompany){
 	var clientCompanyUrl = '/companies/' +
 	 clientCompany.id + '/shops'
-		
+	
+	// 2:	
 	$http.get(clientCompanyUrl)
 	 .success(function(clientShops){
 		var specificShop = clientShops.pop()
 		var specificShopUrl = '/shops/' + specificShop.id
 
+		// 3:
 		$http.get(specificShopUrl)
 		  .success(function(shopData){
 			// Wooo now we can return shop specific data
@@ -97,19 +100,20 @@ The key to chaining promises is often overlooked by padawans. If you are using p
 {% highlight javascript %}
 var whatWeReallyWant;
 
+// 1:
 $http.get(/companies, {params: {client_id: client.id}})
  .then(function(clientCompany){
 	var clientCompanyUrl = '/companies/' +
 	 clientCompany.id + '/shops'
 	
 	return $http.get(clientCompanyUrl));
- })
+ }) // 2: 
  .then(function(clientShops){
 	var specificShop = clientShops.pop()
 	var specificShopUrl = '/shops/' + specificShop.id
 	
 	return $http.get(specificShopUrl);
- })
+ }) // 3:
  .then(function(shopData){
 	whatWeReallyWant = shopData.quarterlyProfit
  });
@@ -129,13 +133,15 @@ Each promise comes with an API where we can watch for signalling errors or resol
 {% highlight javascript %}
 var whatWeReallyWant, clientCompanyUrl, specificShopUrl;
 
+// 1ish:
 var clientCompanyPromise = $http
 	.get(/companies, {params: {client_id: client.id}})
 	.then(function(clientCompany){
 		clientCompanyUrl = '/companies/' 
 		+ clientCompany.id + '/shops'
 	});
-	
+
+// 2ish:	
 var clientShopsPromise = $http
 	.get(clientCompanyUrl).then(function(clientShops){
 		var specificShop = clientShops.pop()
@@ -143,6 +149,7 @@ var clientShopsPromise = $http
 		specificShopUrl = '/shops/' + specificShop.id
 	})
 
+// 3ish:
 var profitPromise = $http
 	.get(specificShopUrl)
 	.then(function(shopData){
@@ -151,7 +158,7 @@ var profitPromise = $http
 
 // Resolves promises in the same order
 // they are passed into the array
- 
+// 1,2,3: 
 $q.all(
 	[clientCompanyPromise,clientShopsPromise,profitPromise]
 ).then(
@@ -182,6 +189,7 @@ var clientCompanyReqStrm = Rx.Observable.just('/companies');
 // clientCompanyRespStrm is an observable that will
 // return values emitted from the /companies API
 
+// 1:
 var clientCompanyRespStrm = clientCompanyReqStrm
  .flatMap(function(clientCompany){
 	var clientCompanyUrl = '/companies/' + clientCompany.id +
@@ -190,6 +198,7 @@ var clientCompanyRespStrm = clientCompanyReqStrm
 	return Rx.Observable.fromPromise($http.get(clientCompanyUrl));
 })
 
+// 2:
 var clientShopsRespStrm = clientCompanyRespStrm
  .flatMap(function(clientShops){
 	var specificShop = clientShops.pop()
@@ -201,6 +210,7 @@ var clientShopsRespStrm = clientCompanyRespStrm
 // subscribing to a stream creates an observer 
 // that notifies us of emitted values and lets us render the data. 
 
+// 3:
 clientShopRespStrm.subscribe(function(shopData){
 	whatWeReallyWant = shopData;
 })
