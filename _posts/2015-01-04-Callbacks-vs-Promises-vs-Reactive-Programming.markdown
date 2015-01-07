@@ -168,7 +168,7 @@ $q.all(
 
 **Strengths:** Clearly defined functions, much more readable, output is clear.
 
-**Weaknesses:** $q.all() is only resolves in the order passed to the array. Gross.
+**Weaknesses:** $q.all() only resolves in the order passed to the array. Gross.
 
 ##Option 3: Reactive Programming (RP)
  *Library disclaimer, using RxJS but there are other awesome ones out there as well!*
