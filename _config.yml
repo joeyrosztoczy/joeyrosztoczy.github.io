@@ -26,6 +26,8 @@ flattr_button:
 
 # Build settings
 markdown:     kramdown
+kramdown:
+  input: GFM
 permalink:    pretty
 paginate:     3
 sass:
