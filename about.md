@@ -11,9 +11,9 @@ that is aiming to help large farming organizations adopt lean manufacturing
 methodologies and make use of the data overflow currently hitting them! 
 Check us out at [leaf (lean farming)](http://www.leaf.ag)!
 
-I am a huge code nerd and want to be be an expert polyglot one day. I currently work primarily
-in AngularJS and Python. So far I have dived into Ruby (Rails and Sinatra), Javascript (client and node), 
-and enough PHP to be dangerous.
+I am a huge code nerd and aspiring polyglot. My passion is rapidly becoming Elixir + Phoenix. I currently work primarily
+in AngularJS. So far I have dived into Ruby (Rails and Sinatra), Javascript (client and node), 
+and skimmed the surface with Python.
 
 One of my biggest dreams that I will work towards 
 in the next year is to help foster a dev community in Phoenix that 
